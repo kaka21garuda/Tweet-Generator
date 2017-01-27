@@ -1,57 +1,42 @@
 import statistics
 
+
 # this function takes in string file and returns
 #  the number of number of words that appear in a format of dictionary
 def histogram(source_text):
     words_array = []
-    count = {}
+    # lists of all different words
+    number_different_words = 0
 
     with open(source_text, 'r') as myfile:
-        data = myfile.read().replace('\n', '').replace('.', '').replace(',', '')
+        # read the data file and remove all unnecessary characters
+        data = myfile.read().replace('\n', '').replace('.', '').replace(',', '').replace('(', '').replace(')', '')
         # split the data from sentences to words.
         words_array = data.split()
-    for word in words_array:
-        # check if the word already exists
-        if word in count:
-            # if yes, increment the value by 1
-            count[word] += 1
-        else:
-            count[word] = 1
-    # returns dictionary
-    return count
+    # HOW MANY DIFFERENT WORDS ARE USED?
+    number_different_words = len(set(words_array))
+    # returns a data structure in a format of dictionary
+    return {k: words_array.count(k) for k in set(words_array)}
 
 
-def uniqe_words(dict_histogram):
-    # most used word with value of
-    most_used_number = 0
-    # list of all different words
-    all_words = []
-    # the lists of the least that was used in the text.
-    least_words = []
-    value_array = []
-    for key, value in dict_histogram.iteritems():
-        all_words.append(key)
-        # only gets the uniqe value/the least word used in the text from the histogram
-        if value == 1:
-            # these are the least words
-            least_words.append(key)
-        else:
-            value_array.append(value)
-            value_array = sorted(value_array, key=int)
-            most_used_number = value_array[len(value_array) - 1]
+def unique_words(dict_histogram):
+    # THE MOST FREQUENT WORD
+    most_used_word = max(dict_histogram, key=dict_histogram.get)
+    # THE LEAST WORDS IN THE TEXT, THAT ONLY CAME OUT ONCE
+    least_words = [k for k, v in dict_histogram.iteritems() if v == 1]
+    # returns the total count of uniqe words in the histogram
     return len(least_words)
 
 
 def frequency(word, dict_histogram):
-    values = []
-    # returns how many times does the word appear in the text.
-    for key, value in dict_histogram.iteritems():
-        values.append(value)
-    mean = statistics.mean(values)
-    median = statistics.median(values)
     return dict_histogram[word]
 
+def test():
+    lst = []
+    for i in range(100):
+        lst.append(i)
 
 if __name__ == '__main__':
-    # print frequency('a', histogram('paul_blog.txt'))
-    print uniqe_words(histogram('paul_blog.txt'))
+    import timeit
+    # print unique_words(histogram('paul_blog.txt'))
+    print timeit.timeit("test()", setup="from __main__ import test")

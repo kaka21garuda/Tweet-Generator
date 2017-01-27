@@ -10,7 +10,6 @@ def random_quote():
     return " ".join(sys.argv)
 
 
-
 if __name__ == '__main__':
     quote = random_quote()
     print quote

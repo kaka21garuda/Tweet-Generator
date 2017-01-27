@@ -5,7 +5,7 @@ import sys
 def random_quote():
     rand_index = random.randint(1, len(sys.argv) - 1)
     del sys.argv[0]
-    # randomize all the elements in the array
+    # randomize all the elements in the array using the shuffle
     random.shuffle(sys.argv)
     return " ".join(sys.argv)
 

@@ -1,4 +1,3 @@
-import random
 import sys
 
 
@@ -28,12 +27,13 @@ def unique_words(dict_histogram):
     unique_words_set = dict_histogram.keys()
     return len(unique_words_set)
 
+
 def cool_words(dict_histogram):
     # THE MOST FREQUENT WORD
     most_used_word = max(dict_histogram, key=dict_histogram.get)
     # THE LEAST WORDS IN THE TEXT, THAT ONLY CAME OUT ONCE
     least_words = [k for k, v in dict_histogram.iteritems() if v == 1]
-    print  most_used_word
+    print most_used_word
     print least_words
 
 
@@ -43,8 +43,6 @@ def frequency(word, dict_histogram):
     else:
         return 0
 
-
-
 # def test():
 #     lst = []
 #     for i in range(100):
@@ -53,5 +51,6 @@ def frequency(word, dict_histogram):
 if __name__ == '__main__':
 
     default_histogram = histogram(sys.argv[1])
+    print unique_words(default_histogram)
     # print unique_words(histogram('paul_blog.txt'))
     # print timeit.timeit("test()", setup="from __main__ import test")

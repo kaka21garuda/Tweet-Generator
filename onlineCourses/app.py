@@ -1,7 +1,7 @@
 import random
 import os
 
-from flask import Flask
+from flask import Flask, redirect, url_for, request
 from gen_histogram import histogram
 from sample import generate_probability, generate_word
 
@@ -16,9 +16,13 @@ def try_random():
     return random.choice(tes_list)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
+@accept
 def hello_world():
-    return try_random()
+    if request.method == 'GET':
+        return try_random()
+    else:
+        return "hello_world"
 
 
 if __name__ == '__main__':

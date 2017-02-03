@@ -6,7 +6,6 @@ from sample import generate_probability, generate_word
 
 app = Flask(__name__)
 
-
 dict_histogram = histogram('tom_sawyer.txt')
 
 tes_list = ["one", "fish", "two", "fish", "red", "fish", "blue", "fish"]

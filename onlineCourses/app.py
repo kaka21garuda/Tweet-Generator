@@ -17,7 +17,6 @@ def try_random():
 
 
 @app.route('/', methods=['GET'])
-@accept
 def hello_world():
     if request.method == 'GET':
         return try_random()

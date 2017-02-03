@@ -16,12 +16,9 @@ def try_random():
     return random.choice(tes_list)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def hello_world():
-    if request.method == 'GET':
-        return try_random()
-    else:
-        return "hello_world"
+    return try_random()
 
 
 if __name__ == '__main__':

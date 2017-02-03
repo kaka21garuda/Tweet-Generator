@@ -1,4 +1,5 @@
 import random
+import os
 
 from flask import Flask
 from gen_histogram import histogram
@@ -22,4 +23,5 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host='0.0.0.0', posrt=port)

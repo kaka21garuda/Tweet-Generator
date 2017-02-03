@@ -16,8 +16,7 @@ def histogram(source_text):
     for word in words_array:
         if word not in dictionary:
             dictionary[word] = 1
-        else:
-            dictionary[word] += 1
+        dictionary[word] += 1
     # returns a data structure in a format of dictionary
     return dictionary
 
@@ -47,6 +46,7 @@ def frequency(word, dict_histogram):
 #     lst = []
 #     for i in range(100):
 #         lst.append(i)
+
 
 if __name__ == '__main__':
 

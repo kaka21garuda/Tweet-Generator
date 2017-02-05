@@ -20,6 +20,7 @@ def histogram_probability():
 
 
 def stochastic_pick(dict_histogram):
+    # getting a random float from 0.0 to 1.0
     rand_range = random.uniform(0, 1)
     init_probability = 0.0
     for k, v in dict_histogram.iteritems():
@@ -29,13 +30,11 @@ def stochastic_pick(dict_histogram):
     return k
 
 
-
 @app.route('/')
 def hello_world():
-    return "k"
+    return histogram_probability()
 
 
 if __name__ == '__main__':
-    # app.run(debug=True)
-    print histogram_probability()
+    app.run(debug=True)
     # print stochastic_pick()

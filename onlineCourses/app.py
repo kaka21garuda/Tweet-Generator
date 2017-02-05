@@ -16,12 +16,18 @@ def histogram_probability():
     for k in tes_dict.keys():
         prob_dict[k] = (float(tes_dict[k]) / sum(tes_dict.values()))
     # return stochastic_pick(prob_dict)
-    return prob_dict
+    return stochastic_pick(prob_dict)
 
 
 def stochastic_pick(dict_histogram):
     rand_range = random.uniform(0, 1)
-    return rand_range
+    init_probability = 0.0
+    for k, v in dict_histogram.iteritems():
+        init_probability += v
+        if rand_range < init_probability:
+            break
+    return k
+
 
 
 @app.route('/')

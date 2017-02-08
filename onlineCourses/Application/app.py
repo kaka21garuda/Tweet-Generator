@@ -1,8 +1,10 @@
 import random
 
-from flask import Flask, redirect, url_for, request
-from gen_histogram import histogram
-from sample import generate_probability, generate_word
+import sample
+import sentence
+
+from flask import Flask
+
 
 app = Flask(__name__)
 
@@ -29,15 +31,10 @@ def stochastic_pick(dict_histogram):
 
 @app.route('/')
 def hello_world():
-    sentence = []
-    dict_histogram = histogram('tom_sawyer.txt')
-    tes_dict = {'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}
-    dict_prob = histogram_probability(dict_histogram)
-    for i in range(17):
-        sentence.append(stochastic_pick(dict_prob))
-    return " ".join(sentence)
+    return sample.generate_word("tom_sawyer.txt")
+    # return sentence.generate_sentence("tom_sawyer.txt")
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
     # print stochastic_pick()

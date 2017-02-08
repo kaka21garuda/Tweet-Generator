@@ -1,11 +1,8 @@
 import random
 
-from gen_histogram import histogram
 
-
-def generate_word(source_text):
-    dict_histogram = histogram(source_text)
-    dict_prob = histogram_probability(dict_histogram)
+def generate_word(histogram_text):
+    dict_prob = histogram_probability(histogram_text)
     return stochastic_pick(dict_prob)
 
 

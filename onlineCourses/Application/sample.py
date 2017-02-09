@@ -7,7 +7,7 @@ def generate_word(histogram_text):
 
 
 def histogram_probability(dict_histogram):
-    prob_dict = {}
+    prob_dict = {} 
     sum_values = sum(dict_histogram.values())
     for k in dict_histogram.keys():
         prob_dict[k] = (float(dict_histogram[k]) / sum_values)

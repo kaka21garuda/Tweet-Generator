@@ -9,3 +9,6 @@ def list_token(source_text):
         # split the data from sentences to words.
         words_array = data.split()
     return words_array
+
+
+print list_token("tom_sawyer.txt")

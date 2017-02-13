@@ -1,22 +1,16 @@
 class Dictogram(dict):
 
-    def __init__(self, source_text):
+    def __init__(self, iterable=None):
+        """Initialize this histogram as a new dict; update with given items"""
         super(Dictogram, self).__init__()
-        self.source_text = source_text
         self.types = 0  # the number of unique words/distinct items in dictionary
         self.tokens = 0  # the total of all tokens in the dictionary
-        if source_text:
-            self.histogram()
+        if iterable:
+            self.update(iterable)
 
-    def histogram(self):
-        words_array = []
-        # lists of all different words
-        with open(self.source_text, 'r') as myfile:
-            # read the data file and remove all unnecessary characters
-            data = myfile.read().replace('\n', ' ').replace('(', '').replace(')', '').replace('"','').lower()
-            # split the data from sentences to words.
-            words_array = data.split()
-        for word in words_array:
+    def update(self, iterable):
+        """Update this histogram with the items in the given iterable"""
+        for word in iterable:
             if word not in self:
                 self[word] = 1
             self[word] += 1
@@ -24,8 +18,12 @@ class Dictogram(dict):
         return self
 
     def unique_words(self):
+        """Return the amount of different words in the histogram"""
         self.types = len(self.keys())
         return self.types
 
     def frequency(self, word):
-        return self.get(word)
+        """Return the count of the given item in this histogram, or 0"""
+        # return the count of the word,
+        # if the word not in dictogram, return 0
+        return self.get(word, 0)

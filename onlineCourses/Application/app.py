@@ -1,5 +1,4 @@
-import random
-
+import dictogram
 import sample
 import sentence
 import tokenize
@@ -14,11 +13,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    list_tokens = tokenize.list_token("tom_sawyer.txt")
-    histogram = word_count.generate_histograms(list_tokens)
     # return sample.generate_word(histogram)
-    return sentence.generate_sentence(histogram)
+    return sentence.generate_sentence(histogram.histogram())
 
 
 if __name__ == '__main__':
+    # make a Dictogram object which types dictionary
+    histogram = dictogram.Dictogram(source_text="tom_sawyer.txt")
     app.run()

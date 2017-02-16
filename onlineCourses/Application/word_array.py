@@ -22,12 +22,7 @@ def iterate(list_text):
         graph[list_text[n]].append(list_text[n + 1])
     return graph
 
-def gen_word(lists):
-    
 
 def prob_graph(word):
     prob = dictogram.Dictogram(word)
     return prob
-
-
-print iterate(list_token("tom_sawyer.txt"))

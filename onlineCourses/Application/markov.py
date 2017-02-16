@@ -1,9 +1,15 @@
 import random
 
+import word_array
+import dictogram
+import sample
+
 class Markov(dict):
 
     def __init__(self, words_list=None):
-        super(Dictogram, self).__init__()
+        super(Markov, self).__init__()
+        self.words_list = word_array.list_token("tom_sawyer.txt")
+        self.hist_freq = dictogram.Dictogram(words_list)
         if words_list:
             self.link_up(words_list)
 
@@ -15,3 +21,19 @@ class Markov(dict):
         return self
 
     def gen_sent(self):
+        arr = []
+        curr_state = sample.generate_word(self.hist_freq)
+
+        for i in range(50):
+            hist_next = dictogram.Dictogram(self[curr_state])
+            next_choice = sample.generate_word(hist_next)
+            curr_state = next_choice
+            arr.append(next_choice)
+        #     pick_next = random.choice(self[curr_state])
+        #     arr.append(pick_next)
+        return " ".join(arr)
+
+
+lists = word_array.list_token("tom_sawyer.txt")
+mar = Markov(words_list=lists)
+print mar.gen_sent()

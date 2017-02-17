@@ -14,17 +14,18 @@ class Markov(dict):
             self.link_up(words_list)
 
     def link_up(self, words_list):
-        for i in range(0, len(words_list) - 2):
+        for i in range(0, len(words_list) - 1):
             if words_list[i] not in self:
                 self[words_list[i]] = [words_list[i + 1]]
-            self[words_list[i]].append(words_list[i + 1])
+            else:
+                self[words_list[i]].append(words_list[i + 1])
         return self
 
     def gen_sent(self):
         arr = []
         curr_state = sample.generate_word(self.hist_freq)
 
-        for i in range(50):
+        for i in range(10):
             hist_next = dictogram.Dictogram(self[curr_state])
             next_choice = sample.generate_word(hist_next)
             curr_state = next_choice
@@ -34,6 +35,6 @@ class Markov(dict):
         return " ".join(arr)
 
 
-lists = word_array.list_token("tom_sawyer.txt")
+lists = word_array.list_token("sawyer.txt")
 mar = Markov(words_list=lists)
 print mar.gen_sent()

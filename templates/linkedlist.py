@@ -55,36 +55,57 @@ class LinkedList(object):
         # TODO: append given item
         new_node = Node(data=item)
         if self.count == 0:
-            new_node.next = self.head
             self.head = new_node
             self.tail = new_node
             self.count += 1
         else:
             self.tail.next = new_node
-            # new_node.next = new_node
             self.tail = new_node
             self.count += 1
-        # new_node.next = self.head
-        # self.head = new_node
-        # print("HEAD NEXT", self.head.next)
-        pass
+            pass
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list"""
         new_node = Node(data=item)
-        new_node.next = self.head
-        self.head = new_node
-        self.count += 1
-        pass
+        if self.count == 0:
+            self.head = new_node
+            self.tail = new_node
+            self.count += 1
+        else:
+            new_node.next = self.head
+            self.head = new_node
+            self.count += 1
+            pass
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError"""
         # TODO: find given item and delete if found
-        pass
+        start_node = self.head
+        before_node = None
+        while start_node:
+            if start_node.data == item:
+                if before_node:
+                    if start_node.next is None:
+                        self.tail = self.head
+                    before_node.next = start_node.next
+                elif before_node is None and start_node.next is None:
+                    self.head = None
+                    self.tail = None
+                elif before_node is None:
+                    self.head = start_node.next
+                self.count -= 1
+                return True
+            else:
+                before_node = start_node
+                start_node = before_node.next
+        else:
+            raise ValueError
+            pass
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality"""
         # TODO: find item where quality(item) is True
+
         pass
 
 

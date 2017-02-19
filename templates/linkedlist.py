@@ -53,26 +53,40 @@ class LinkedList(object):
     def append(self, item):
         """Insert the given item at the tail of this linked list"""
         # TODO: append given item
+        # making a new_node
         new_node = Node(data=item)
+        # if there is no any node in the linkedlist
         if self.count == 0:
+            # assign the head with the new_node
             self.head = new_node
+            # assign the tail with the new_node
             self.tail = new_node
             self.count += 1
         else:
+            # make the new_node of the tail.next
+            # meaning it will be the element after latest element
             self.tail.next = new_node
+            # assign a new tail with the new_node
             self.tail = new_node
             self.count += 1
             pass
 
     def prepend(self, item):
         """Insert the given item at the head of this linked list"""
+        # make a node
         new_node = Node(data=item)
         if self.count == 0:
+            # if there is no node in the linkedlist
+            # make the new_node as the head
             self.head = new_node
+            # also its tail
             self.tail = new_node
             self.count += 1
         else:
+            # if there's already a new_node
+            # prepend the head of linkedlist after the new_node
             new_node.next = self.head
+            # assign the head with the new_node
             self.head = new_node
             self.count += 1
             pass
@@ -111,15 +125,21 @@ class LinkedList(object):
         """Return an item from this linked list satisfying the given quality"""
         # TODO: find item where quality(item) is True
         start_node = self.head
+        # start from the head
         while start_node:
+            # start iterating the node from the head
+            # start_node is not None
             if start_node:
                 if quality(start_node.data) is True:
+                    # return the start_node.data if its True in quality
                     return start_node.data
                 else:
+                    # if not True
+                    # set the start_node into the next one
                     start_node = start_node.next
         else:
             return None
-            
+
 
 def test_linked_list():
     ll = LinkedList()

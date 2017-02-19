@@ -82,8 +82,11 @@ class LinkedList(object):
         # TODO: find given item and delete if found
         start_node = self.head
         before_node = None
+        # iterate through all the nodes in the object
         while start_node:
+            # if the item is found in the data
             if start_node.data == item:
+                # if there is a node before the start node
                 if before_node:
                     if start_node.next is None:
                         self.tail = self.head
@@ -93,21 +96,30 @@ class LinkedList(object):
                     self.tail = None
                 elif before_node is None:
                     self.head = start_node.next
+                # decrement the amount of node by 1
                 self.count -= 1
                 return True
             else:
                 before_node = start_node
                 start_node = before_node.next
         else:
+            # raise a ValueError when to
             raise ValueError
             pass
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality"""
         # TODO: find item where quality(item) is True
-
-        pass
-
+        start_node = self.head
+        while start_node:
+            if start_node:
+                if quality(start_node.data) is True:
+                    return start_node.data
+                else:
+                    start_node = start_node.next
+        else:
+            return None
+            
 
 def test_linked_list():
     ll = LinkedList()

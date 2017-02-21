@@ -13,7 +13,8 @@ class Dictogram(dict):
         for word in iterable:
             if word not in self:
                 self[word] = 1
-            self[word] += 1
+            else:
+                self[word] += 1
         # returns a data structure in a format of dictionary
         return self
 

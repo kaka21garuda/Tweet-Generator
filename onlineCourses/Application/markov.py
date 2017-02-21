@@ -4,12 +4,13 @@ import word_array
 import dictogram
 import sample
 
+
 class Markov(dict):
 
     def __init__(self, words_list=None):
         super(Markov, self).__init__()
         self.words_list = word_array.list_token("tom_sawyer.txt")
-        self.hist_freq = dictogram.Dictogram(words_list)
+        self.hist_freq = dictogram.Dictogram(words_list) # problem
         if words_list:
             self.link_up(words_list)
 
@@ -24,6 +25,7 @@ class Markov(dict):
     def gen_sent(self):
         arr = []
         curr_state = sample.generate_word(self.hist_freq)
+        arr.append(curr_state)
 
         for i in range(10):
             hist_next = dictogram.Dictogram(self[curr_state])
@@ -35,6 +37,7 @@ class Markov(dict):
         return " ".join(arr)
 
 
-lists = word_array.list_token("sawyer.txt")
+lists = word_array.list_token("tom_sawyer.txt")
 mar = Markov(words_list=lists)
+# print mar
 print mar.gen_sent()

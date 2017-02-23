@@ -93,6 +93,10 @@
 ### Class 7: Tuesday, February 14
 
 **Activity:**
+<<<<<<< HEAD
+=======
+- Compare histogram functions and class instance methods
+>>>>>>> 08ddcf3bad685d5bf93d101acf49dcde86dfd5b1
 - Markov chains and random walks lecture and discussion
 
 **Tutorial:**
@@ -106,14 +110,57 @@
 ### Class 8: Thursday, February 16
 
 **Activity:**
+<<<<<<< HEAD
 - Act out how dynamic arrays and linked lists work
 - Review slides on [arrays and linked lists](ArraysLinkedLists.pdf)
+=======
+- Review Markov chains, how to generate one and sample sentences from it
+- Act out how dynamic arrays and linked lists work
+>>>>>>> 08ddcf3bad685d5bf93d101acf49dcde86dfd5b1
 
 **Tutorial:**
 - Page 8: Linked List
 
 **Objectives:**
+<<<<<<< HEAD
 - Implement LinkedList class using [starter code](templates/linkedlist.py) and [unit tests](templates/test_linkedlist.py)
+=======
+- Implement `LinkedList` class using [starter code](templates/linkedlist.py) and [unit tests](templates/test_linkedlist.py)
+
+**Resources:**
+- Watch Make School's [linked list lecture]
+- Review Make School's [linked list slides]
+- Play with Visualgo's [interactive animations of linked lists][visualgo list]
+- Read Wikipedia's [dynamic array article] and [linked list article]
+
+[dynamic array article]: https://en.wikipedia.org/wiki/Dynamic_array
+[linked list article]: https://en.wikipedia.org/wiki/Linked_list
+[linked list lecture]: https://www.youtube.com/watch?v=3WWuf4H61Nk
+[linked list slides]: ArraysLinkedLists.pdf
+[visualgo list]: https://visualgo.net/list
+
+
+### Class 9: Tuesday, February 21
+
+**Activity:**
+- Draw diagram of how linked list data structure is stored in memory
+- Compare similarities and differences in diagram representations
+
+**Tutorial:**
+- Page 9: Hash Table
+
+**Objectives:**
+- Implement `HashTable` class using [starter code](templates/hashtable.py) and [unit tests](templates/test_hashtable.py)
+
+**Resources:**
+- Watch Make School's [hash table lecture]
+- Review Make School's [hash table slides]
+- Read Wikipedia's [hash table article]
+
+[hash table article]: https://en.wikipedia.org/wiki/Hash_table
+[hash table lecture]: https://www.youtube.com/watch?v=nLWXJ6IDKmQ
+[hash table slides]: HashTables.pdf
+>>>>>>> 08ddcf3bad685d5bf93d101acf49dcde86dfd5b1
 
 
 ## Working with this GitHub repository

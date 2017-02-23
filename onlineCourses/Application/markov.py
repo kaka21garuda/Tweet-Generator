@@ -10,7 +10,7 @@ class Markov(dict):
     def __init__(self, words_list=None):
         super(Markov, self).__init__()
         self.words_list = word_array.list_token("tom_sawyer.txt")
-        self.hist_freq = dictogram.Dictogram(words_list) # problem
+        self.hist_freq = dictogram.Dictogram(words_list) 
         if words_list:
             self.link_up(words_list)
 

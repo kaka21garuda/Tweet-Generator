@@ -34,6 +34,11 @@ class HashTable(object):
     def values(self):
         """Return a list of all values in this hash table"""
         # TODO: Collect all values in each of the buckets
+        all_values = []
+        for bucket in self.buckets:
+            for key, value in bucket.items():
+                all_values.append(value)
+        return all_values
         pass
 
     def items(self):
@@ -47,31 +52,59 @@ class HashTable(object):
     def length(self):
         """Return the length of this hash table by traversing its buckets"""
         # TODO: Count number of key-value entries in each of the buckets
-        return 0
+        return len(self.items())
 
     def contains(self, key):
         """Return True if this hash table contains the given key, or False"""
         # TODO: Check if the given key exists in a bucket
+        for pair in self.items():
+            if key == pair[0]:
+                return True
+        return False
         pass
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError"""
         # TODO: Check if the given key exists and return its associated value
+        for pair in self.items():
+            if key == pair[0][0]:
+                return pair[1]
+        raise KeyError
         pass
 
     def set(self, key, value):
         """Insert or update the given key with its associated value"""
         # TODO: Insert or update the given key-value entry into a bucket
-        pass
+        which_bucket = self._bucket_index(key)
+        if self.contains(key):
+            for pair in self.buckets[which_bucket].items():
+                if pair[0] == key:
+                    self.buckets[which_bucket].delete(pair)
+                    pair = list(pair)
+                    pair[1] = value
+                    pair = tuple(pair)
+                    print(pair)
+                    self.buckets[which_bucket].append(pair)
+            print(self.buckets[which_bucket].items())
+        else:
+            self.buckets[which_bucket].append((key, value))
+            pass
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError"""
         # TODO: Find the given key and delete its entry if found
+        which_index = self._bucket_index(key)
+        for pair in self.items():
+            if pair[0] == key:
+                self.buckets[which_index].delete(pair)
+                return
+        raise KeyError
         pass
 
 
 def test_hash_table():
     ht = HashTable()
+    print(ht.buckets)
     print(ht)
 
     print('Setting entries:')
@@ -80,7 +113,6 @@ def test_hash_table():
     ht.set('V', 5)
     print(ht)
     ht.set('X', 10)
-    print(ht)
     print('contains(X): ' + str(ht.contains('X')))
     print('get(I): ' + str(ht.get('I')))
     print('get(V): ' + str(ht.get('V')))
@@ -88,15 +120,15 @@ def test_hash_table():
     print('length: ' + str(ht.length()))
 
     # Enable this after implementing delete:
-    # print('Deleting entries:')
-    # ht.delete('I')
-    # print(ht)
-    # ht.delete('V')
-    # print(ht)
-    # ht.delete('X')
-    # print(ht)
-    # print('contains(X): ' + str(ht.contains('X')))
-    # print('length: ' + str(ht.length()))
+    print('Deleting entries:')
+    ht.delete('I')
+    print(ht)
+    ht.delete('V')
+    print(ht)
+    ht.delete('X')
+    print(ht)
+    print('contains(X): ' + str(ht.contains('X')))
+    print('length: ' + str(ht.length()))
 
 
 if __name__ == '__main__':

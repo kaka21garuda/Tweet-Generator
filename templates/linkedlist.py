@@ -101,32 +101,33 @@ class LinkedList(object):
         """Delete the given item from this linked list, or raise ValueError"""
         # TODO: find given item and delete if found
 
-        start_node = self.head
+        node = self.head
         before_node = None
         # iterate through all the nodes in the object
-        while start_node:
+        while node:
             # if the item is found in the data
-            if start_node.data == item:
+            print("Node:", node)
+            if node.data == item:
                 # if there is a node before the start node
+                print("before_node:", before_node)
+                print("node.next:", node.next)
                 if before_node:
-                    if start_node.next is None:
-                        self.tail = self.head
-                    before_node.next = start_node.next
-                elif before_node is None and start_node.next is None:
+                    if node.next is None:  # if node == self.tail
+                        self.tail = before_node
+                    before_node.next = node.next
+                elif before_node is None and node.next is None:
                     self.head = None
                     self.tail = None
                 elif before_node is None:
-                    self.head = start_node.next
+                    self.head = node.next
                 # decrement the amount of node by 1
                 self.count -= 1
-                return True
+                return
             else:
-                before_node = start_node
-                start_node = before_node.next
-        else:
-            # raise a ValueError when to
-            raise ValueError
-            pass
+                before_node = node
+                node = before_node.next
+        # raise a ValueError when to
+        raise ValueError
 
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality"""
@@ -167,29 +168,28 @@ def test_linked_list():
 
     print(ll.length())
 
-    ll.delete('A')
-    print(ll)
-    ll.delete('C')
-    print(ll)
-    ll.delete('B')
-    print(ll)
-    print('head: ' + str(ll.head))
-    print('tail: ' + str(ll.tail))
-    print(ll.length())
-    print('length: ' + str(ll.length()))
-
-    # # Enable this after implementing delete:
-    # print('Deleting items:')
-    # ll.delete('B')
+    # ll.delete('A')
     # print(ll)
     # ll.delete('C')
     # print(ll)
-    # ll.delete('A')
+    # ll.delete('B')
     # print(ll)
     # print('head: ' + str(ll.head))
     # print('tail: ' + str(ll.tail))
+    # print(ll.length())
     # print('length: ' + str(ll.length()))
 
+    # Enable this after implementing delete:
+    print('Deleting items:')
+    ll.delete('B')
+    print(ll)
+    ll.delete('C')
+    print(ll)
+    ll.delete('A')
+    print(ll)
+    print('head: ' + str(ll.head))
+    print('tail: ' + str(ll.tail))
+    print('length: ' + str(ll.length()))
 
 
 if __name__ == '__main__':

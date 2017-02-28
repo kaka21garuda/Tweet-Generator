@@ -55,6 +55,7 @@ class LinkedList(object):
         return self.count
         pass
 
+    # O(1)
     def append(self, item):
         """Insert the given item at the tail of this linked list"""
         # TODO: append given item
@@ -77,6 +78,7 @@ class LinkedList(object):
             self.count += 1
             pass
 
+    # O(1)
     def prepend(self, item):
         """Insert the given item at the head of this linked list"""
         # make a node
@@ -97,6 +99,7 @@ class LinkedList(object):
             self.count += 1
             pass
 
+    # O(n)
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError"""
         # TODO: find given item and delete if found
@@ -129,6 +132,7 @@ class LinkedList(object):
         # raise a ValueError when to
         raise ValueError
 
+    # O(n)
     def find(self, quality):
         """Return an item from this linked list satisfying the given quality"""
         # TODO: find item where quality(item) is True

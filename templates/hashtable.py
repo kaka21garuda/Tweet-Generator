@@ -31,6 +31,9 @@ class HashTable(object):
                 all_keys.append(key)
         return all_keys
 
+    # O(nk)
+    # n: number of buckets
+    # k: number of items in bucket
     def values(self):
         """Return a list of all values in this hash table"""
         # TODO: Collect all values in each of the buckets
@@ -49,11 +52,13 @@ class HashTable(object):
             all_items.extend(bucket.items())
         return all_items
 
+    # O(1)
     def length(self):
         """Return the length of this hash table by traversing its buckets"""
         # TODO: Count number of key-value entries in each of the buckets
         return len(self.items())
 
+    # O(n)
     def contains(self, key):
         """Return True if this hash table contains the given key, or False"""
         # TODO: Check if the given key exists in a bucket
@@ -63,6 +68,7 @@ class HashTable(object):
         return False
         pass
 
+    # O(n)
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError"""
         # TODO: Check if the given key exists and return its associated value

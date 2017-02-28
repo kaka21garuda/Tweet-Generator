@@ -22,6 +22,7 @@ class HashTable(object):
         """Return the bucket index where the given key would be stored"""
         return hash(key) % len(self.buckets)
 
+    # O(nk)
     def keys(self):
         """Return a list of all keys in this hash table"""
         # Collect all keys in each of the buckets
@@ -44,6 +45,7 @@ class HashTable(object):
         return all_values
         pass
 
+    # O(n)
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table"""
         # Collect all pairs of key-value entries in each of the buckets
@@ -78,6 +80,7 @@ class HashTable(object):
         raise KeyError
         pass
 
+    # O(n)
     def set(self, key, value):
         """Insert or update the given key with its associated value"""
         # TODO: Insert or update the given key-value entry into a bucket
@@ -96,6 +99,7 @@ class HashTable(object):
             self.buckets[which_bucket].append((key, value))
             pass
 
+    # O(n)
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError"""
         # TODO: Find the given key and delete its entry if found

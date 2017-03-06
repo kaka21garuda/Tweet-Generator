@@ -1,16 +1,17 @@
 import dictogram
+import re
 import random
 
 def list_token(source_text):
     words_array = []
     # lists of all different words
-    number_different_words = 0
-    dictionary = {}
+
     with open(source_text, 'r') as myfile:
         # read the data file and remove all unnecessary characters
         data = myfile.read().replace('\n', ' ')
         # split the data from sentences to words.
-        words_array = data.split()
+        line = re.sub(r"[^A-Za-z\s]", "", data.strip()).lower()
+        words_array = line.split()
     return words_array
 
 
@@ -26,3 +27,6 @@ def iterate(list_text):
 def prob_graph(word):
     prob = dictogram.Dictogram(word)
     return prob
+
+
+print list_token("sawyer.txt")

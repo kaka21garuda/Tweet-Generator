@@ -45,7 +45,7 @@ class HashTable(object):
         return all_values
         pass
 
-    # O(n)
+    # O(n) best and worst case
     def items(self):
         """Return a list of all items (key-value pairs) in this hash table"""
         # Collect all pairs of key-value entries in each of the buckets
@@ -60,7 +60,7 @@ class HashTable(object):
         # TODO: Count number of key-value entries in each of the buckets
         return len(self.items())
 
-    # O(n)
+    # O(n) best and worst
     def contains(self, key):
         """Return True if this hash table contains the given key, or False"""
         # TODO: Check if the given key exists in a bucket
@@ -80,24 +80,22 @@ class HashTable(object):
         raise KeyError
         pass
 
-    # O(n)
+    # worst case O(n + l)
+    # best case Omega(n)
     def set(self, key, value):
         """Insert or update the given key with its associated value"""
         # TODO: Insert or update the given key-value entry into a bucket
-        which_bucket = self._bucket_index(key)
-        if self.contains(key):
-            for pair in self.buckets[which_bucket].items():
-                if pair[0] == key:
-                    self.buckets[which_bucket].delete(pair)
-                    pair = list(pair)
-                    pair[1] = value
-                    pair = tuple(pair)
-                    print(pair)
-                    self.buckets[which_bucket].append(pair)
-            print(self.buckets[which_bucket].items())
+        which_bucket = self._bucket_index(key)  # O(1)
+        bucket = self.buckets[which_bucket]  # O(1)
+        if self.contains(key):  # O(n)
+            # worst case O(2l) for the next 4 lines
+            for pair in bucket.items():  # O(l)
+                if pair[0] == key:  # O(1)
+                    bucket.delete(pair)  # O(l)
+                    bucket.append((key, value))  # O(1)
+            # print(bucket.items())
         else:
-            self.buckets[which_bucket].append((key, value))
-            pass
+            bucket.append((key, value))  # O(1)
 
     # O(n)
     def delete(self, key):

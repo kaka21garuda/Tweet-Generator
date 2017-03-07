@@ -27,6 +27,3 @@ def iterate(list_text):
 def prob_graph(word):
     prob = dictogram.Dictogram(word)
     return prob
-
-
-print list_token("sawyer.txt")

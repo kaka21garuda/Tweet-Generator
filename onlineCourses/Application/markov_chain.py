@@ -41,4 +41,4 @@ class Mar(object):
 
 m = Mar(order=2)
 m.find_pair("sawyer.txt")
-print m.gent_sentence(23)
+print m.gent_sentence(26)
